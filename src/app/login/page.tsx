@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ShieldCheck } from "lucide-react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { ZkProofAnimation } from "@/components/auth/zk-proof-animation"
+import { ZKProofAnimation } from "@/components/auth/zk-proof-animation"
 import { useLanguage } from "@/context/language-context"
 
 export default function LoginPage() {
@@ -53,7 +53,7 @@ export default function LoginPage() {
 
           {step !== "initial" && (
             <div className="py-8">
-              <ZkProofAnimation state={step} />
+              <ZKProofAnimation />
               <p className="mt-4 text-center text-sm text-zinc-400">
                 {step === "generating" && t("login.generating")}
                 {step === "verifying" && t("login.verifying")}
