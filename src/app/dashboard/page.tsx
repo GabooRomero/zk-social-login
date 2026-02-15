@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { WalletView } from "@/components/dashboard/wallet-view"
+import { TransferModal } from "@/components/dashboard/transfer-modal"
 import { ShieldCheck, Wallet, Activity } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 
@@ -18,9 +19,12 @@ export default function DashboardPage() {
              <h1 className="text-3xl font-bold tracking-tight">{t("dashboard.title")}</h1>
              <p className="text-zinc-400">{t("dashboard.subtitle")}</p>
           </div>
-          <div className="mt-4 flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1 text-sm text-primary md:mt-0">
-             <ShieldCheck className="h-4 w-4" />
-             {t("dashboard.verified")}
+          <div className="mt-4 flex flex-col md:flex-row items-start md:items-center gap-4 md:mt-0">
+             <TransferModal />
+             <div className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1 text-sm text-primary">
+                <ShieldCheck className="h-4 w-4" />
+                {t("dashboard.verified")}
+             </div>
           </div>
         </header>
 
