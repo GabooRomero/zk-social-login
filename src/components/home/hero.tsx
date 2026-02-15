@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
+import { useLanguage } from "@/context/language-context"
 
 export function Hero() {
+  const { t } = useLanguage()
+
   return (
     <section className="relative flex flex-col items-center justify-center overflow-hidden py-24 md:py-32 lg:py-40">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-800/20 via-zinc-950 to-zinc-950" />
@@ -18,7 +21,7 @@ export function Hero() {
           className="mb-8 inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-sm text-zinc-400 backdrop-blur-sm"
         >
           <Sparkles className="mr-2 h-4 w-4 text-accent" />
-          <span>ZK-Powered Social Login</span>
+          <span>{t("hero.badge")}</span>
         </motion.div>
 
         <motion.h1
@@ -27,8 +30,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="bg-gradient-to-br from-white via-zinc-300 to-zinc-500 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl lg:text-7xl"
         >
-          Your Identity. <br className="hidden sm:inline" />
-          Private & Secure.
+          {t("hero.title")}
         </motion.h1>
 
         <motion.p
@@ -37,7 +39,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-6 max-w-2xl text-lg text-zinc-400 sm:text-xl"
         >
-          Log in with Google, own your keys. Zero-Knowledge proofs ensure your privacy remains intact while giving you full control of your assets. No seed phrases.
+          {t("hero.description")}
         </motion.p>
 
         <motion.div
@@ -48,13 +50,13 @@ export function Hero() {
         >
           <Link href="/login">
             <Button size="lg" className="group h-12 w-full sm:w-auto" variant="default">
-              Start with Google
+              {t("hero.cta.start")}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
           <Link href="/how-it-works">
             <Button size="lg" variant="outline" className="h-12 w-full sm:w-auto">
-              How it works
+              {t("hero.cta.how")}
             </Button>
           </Link>
         </motion.div>

@@ -1,29 +1,34 @@
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft, Shield, Key, Lock, CheckCircle } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 export default function HowItWorksPage() {
+  const { t } = useLanguage()
+
   const steps = [
     {
       icon: <Key className="h-8 w-8 text-accent" />,
-      title: "1. Google Sign-In",
-      description: "You log in with your existing Google account. We receive a standard JWT (JSON Web Token) confirming your identity.",
+      title: t("how.step1.title"),
+      description: t("how.step1.desc"),
     },
     {
       icon: <Lock className="h-8 w-8 text-accent" />,
-      title: "2. Proof Generation",
-      description: "Instead of sending this token to a server, your browser generates a Zero-Knowledge Proof locally. This proof confirms you have a valid token without revealing it.",
+      title: t("how.step2.title"),
+      description: t("how.step2.desc"),
     },
     {
       icon: <Shield className="h-8 w-8 text-accent" />,
-      title: "3. On-Chain Verification",
-      description: "The ZK proof is sent to a smart contract (Verifier). The contract checks the math to verify the proof is valid.",
+      title: t("how.step3.title"),
+      description: t("how.step3.desc"),
     },
     {
       icon: <CheckCircle className="h-8 w-8 text-accent" />,
-      title: "4. Identity Verified",
-      description: "Once verified, you are granted access or a wallet is generated for you. Your Google ID never touches the blockchain, preserving privacy.",
+      title: t("how.step4.title"),
+      description: t("how.step4.desc"),
     },
   ]
 
@@ -35,14 +40,14 @@ export default function HowItWorksPage() {
       <div className="mb-12 text-center">
         <Link href="/">
            <Button variant="ghost" className="mb-8">
-             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
+             <ArrowLeft className="mr-2 h-4 w-4" /> {t("how.back")}
            </Button>
         </Link>
         <h1 className="bg-gradient-to-br from-white via-zinc-300 to-zinc-500 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl">
-          How ZK Login Works
+          {t("how.title")}
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-zinc-400">
-          Secure, private, and non-custodial. Here is how we bridge Web2 identity to Web3 privacy.
+          {t("how.subtitle")}
         </p>
       </div>
 
@@ -67,7 +72,7 @@ export default function HowItWorksPage() {
       <div className="mt-16 text-center">
         <Link href="/login">
             <Button size="lg" className="h-12 w-full sm:w-auto" variant="magic">
-              Try it now
+              {t("how.cta")}
             </Button>
         </Link>
       </div>
